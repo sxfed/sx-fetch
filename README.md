@@ -47,23 +47,30 @@ fetch.get('/user').then(user => {
 }).finally(()  => {
     console.log('请求完成');
 });
-
 ```
 
 ## sx-fetch API
 
 ### 请求方法
-fetch.get(url[, params[, options]])
+##### fetch.get(url[, params[, options]])
 
-fetch.post(url[, params[, options]])
+##### fetch.post(url[, params[, options]])
 
-fetch.del(url[, params[, options]])
+##### fetch.del(url[, params[, options]])
 
-fetch.put(url[, params[, options]])
+##### fetch.put(url[, params[, options]])
 
-fetch.patch(url[, params[, options]])
+##### fetch.patch(url[, params[, options]])
 
-fetch.singleGet(url[, params[, options]])
+##### fetch.singleGet(url[, params[, options]])
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [url] | <code>String</code> | 接口地址 |
+| [params] | <code>Object</code> | 请求参数对象（`get` 请求参数会自定追加到url后。） |
+| [options] | <code>Object</code> | 配置参数 |
+| [options.errorTip] | <code>String</code> | 请求失败的提示信息 |
+| [options.successTip] | <code>String</code> | 请求成功的提示信息 |
 
 ### react 组件装饰器
 
