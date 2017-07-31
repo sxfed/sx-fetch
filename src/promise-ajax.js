@@ -31,7 +31,7 @@
 
 import axios from 'axios';
 import './promise-extends'; // 扩展了 done 和 finally 方法
-import {mosaicUrl} from '../utils/url-utils';
+import {mosaicUrl} from './utils/url-utils';
 
 const instance = axios.create();
 
