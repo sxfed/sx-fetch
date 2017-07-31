@@ -1,23 +1,32 @@
 {
   "name": "sx-fetch",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.2",
+  "description": "基于 axios 的网络请求库",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -r ./dist",
+    "build": "./node_modules/.bin/babel src -d dist",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alboped/sx-fetch.git"
+    "url": "git+https://github.com/sxfed/sx-fetch.git"
   },
-  "author": "",
+  "author": "sxfed",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alboped/sx-fetch/issues"
+    "url": "https://github.com/sxfed/sx-fetch/issues"
   },
-  "homepage": "https://github.com/alboped/sx-fetch#readme",
+  "homepage": "https://github.com/sxfed/sx-fetch#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "react": "^15.6.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1"
   }
 }
