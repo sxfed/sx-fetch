@@ -67,13 +67,13 @@ fetch.get('/user').then(user => {
 
 ##### fetch.singleGet(url[, params[, options]])
 
-| Param | Type | Description | Default |
+| Param | Description | Type | Default |
 | --- | --- | --- | --- |
-| [url] | <code>String</code> | 接口地址 | / |
-| [params] | <code>Object</code> | 请求参数对象（`get` 请求参数会自定追加到url后。） | {} |
-| [options] | <code>Object</code> | 配置参数 | {} |
-| [options.errorTip] | <code>String</code> \| <code>Boolean</code> | 请求失败的提示信息 | get:  '获取数据失败！'、 post:  '操作失败！' |
-| [options.successTip] | <code>String</code> \| <code>Boolean</code> | 请求成功的提示信息 | false |
+| [url] | 接口地址 | <code>String</code> | / |
+| [params] | 请求参数对象（`get` 请求参数会自定追加到url后。） | <code>Object</code> | {} |
+| [options] | 配置参数 | <code>Object</code> | {} |
+| [options.errorTip] | 请求失败的提示信息 | <code>String</code> \| <code>Boolean</code> | get:  '获取数据失败！'、 post:  '操作失败！' |
+| [options.successTip] | 请求成功的提示信息 | <code>String</code> \| <code>Boolean</code> | false |
 
 ### react 组件装饰器
 
@@ -81,10 +81,10 @@ fetch.get('/user').then(user => {
 
 ##### @fetch.inject([options])
 
-| Param | Type | Description | Default |
+| Param | Description | Type | Default |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> | | {} |
-| [options.propName] | <code>String</code> | 注入props的属性名 | $fetch |
+| [options] |  | <code>Object</code> | {} |
+| [options.propName] | 注入props的属性名 | <code>String</code> | $fetch |
 
 ```
 import React, {Component} from 'react';
