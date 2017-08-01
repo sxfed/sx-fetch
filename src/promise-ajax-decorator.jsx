@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import hoistNonReactStatic from 'hoist-non-react-statics';
 
 import * as promiseFetch from './promise-ajax';
 
@@ -54,6 +55,9 @@ function ajax({propName = '$fetch'} = {}) {
                 return <WrappedComponent {...injectProps} {...this.props}/>;
             }
         }
+
+        /* 讲原组件的所有非react属性绑定新组件中 */
+        hoistNonReactStatic(WithSubscription, WrappedComponent);
 
         return WithSubscription;
     };

@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _hoistNonReactStatics = require('hoist-non-react-statics');
+
+var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
+
 var _promiseAjax = require('./promise-ajax');
 
 var promiseFetch = _interopRequireWildcard(_promiseAjax);
@@ -121,8 +125,11 @@ function ajax() {
             return WithSubscription;
         }(_react.Component);
 
-        WithSubscription.displayName = 'WithSubscription(' + (WrappedComponent.displayName || WrappedComponent.name || 'Component') + ')';
+        /* 讲原组件的所有非react属性绑定新组件中 */
 
+
+        WithSubscription.displayName = 'WithSubscription(' + (WrappedComponent.displayName || WrappedComponent.name || 'Component') + ')';
+        (0, _hoistNonReactStatics2.default)(WithSubscription, WrappedComponent);
 
         return WithSubscription;
     };

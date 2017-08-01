@@ -9,6 +9,9 @@ yarn.lock
 .yarnclean
 .npmignore
 
+# build path
+dist/
+
 # Runtime data
 pids
 *.pid
