@@ -1,4 +1,3 @@
-import * as fetch from './promise-ajax';
-import inject from './promise-ajax-decorator';
+import SxFetch from './fetchClass';
 
-export default {...fetch, inject};
+export default new SxFetch();
