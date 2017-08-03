@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import hoistNonReactStatic from 'hoist-non-react-statics';
 
-import * as promiseFetch from './promise-ajax';
-
 /**
  * 将$ajax属性注入到目标组件props中，目标组件可以通过this.props.$ajax.get(...)方式进行使用;
  * 每次发送请求时，保存了请求的句柄，在componentWillUnmount方法中，进行统一cancel，进行资源释放，防止组件卸载之后，ajax回调还能执行引起的bug。
@@ -22,20 +20,21 @@ import * as promiseFetch from './promise-ajax';
  * @module ajax高阶组件
  */
 
-function ajax({propName = '$fetch'} = {}) {
+function fetchInject({propName = '$fetch'} = {}) {
+    const that = this;
     return function (WrappedComponent) {
         class WithSubscription extends Component {
             constructor(props) {
                 super(props);
                 this[propName] = {};
-                this._$ajaxTokens = [];
-                const ajaxMethods = ['get', 'post', 'put', 'patch', 'del', 'singleGet'];
+                this._$fetchTokens = [];
+                const fetchMethods = ['get', 'post', 'put', 'patch', 'del', 'singleGet', 'all'];
 
-                for (let method of ajaxMethods) {
+                for (let method of fetchMethods) {
                     this[propName][method] = (...args) => {
-                        const ajaxToken = promiseFetch[method](...args);
-                        this._$ajaxTokens.push(ajaxToken);
-                        return ajaxToken;
+                        const fetchToken = that[method](...args);
+                        this._$fetchTokens.push(fetchToken);
+                        return fetchToken;
                     };
                 }
             }
@@ -43,14 +42,14 @@ function ajax({propName = '$fetch'} = {}) {
             static displayName = `WithSubscription(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
             componentWillUnmount() {
-                const _$ajaxTokens = this._$ajaxTokens;
-                _$ajaxTokens.forEach(item => item.cancel());
+                const _$fetchTokens = this._$fetchTokens;
+                _$fetchTokens.forEach(item => item.cancel());
             }
 
             render() {
-                const ajaxProp = this[propName];
+                const fetchProp = this[propName];
                 const injectProps = {
-                    [propName]: ajaxProp,
+                    [propName]: fetchProp,
                 };
                 return <WrappedComponent {...injectProps} {...this.props}/>;
             }
@@ -63,4 +62,4 @@ function ajax({propName = '$fetch'} = {}) {
     };
 }
 
-export default ajax;
+export default fetchInject;
