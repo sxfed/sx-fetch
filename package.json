@@ -1,6 +1,6 @@
 {
   "name": "sx-fetch",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "基于 axios 的网络请求库",
   "main": "./dist/index.js",
   "scripts": {

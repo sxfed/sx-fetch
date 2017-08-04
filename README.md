@@ -124,7 +124,7 @@ instance.defaults.baseURL = 'http://localhost:8080';
 ...
 ```
 mock请求使用 `mockDefaults` 属性来配置。
-```
+```js
 fetch.mockDefaults.baseURL = 'http://localhost:8080';
 ...
 ```
@@ -161,7 +161,7 @@ fetch.mockDefaults.baseURL = 'http://localhost:8080';
 同时发起多个请求，全部请求完成之后再执行回调。
 可以使用 `Promise.all()` 方法，`sx-fetch` 也内置了 `all` 方法。
 ##### fetch.all(iterable)
-```
+```js
 const getUser = fetch.get('/user');
 const getList = fetch.get('/list');
 
