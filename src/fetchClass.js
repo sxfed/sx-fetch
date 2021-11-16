@@ -107,6 +107,8 @@ export default class SxFetch {
      * @param {function} onShowErrorTip onShowErrorTip(err, errorTip){...} 如何显示errorTip
      * @param {function} onShowSuccessTip onShowSuccessTip(response, successTip){...} 如何显示successTip
      * @param {function} isMock isMock(url, data, method, options){...} 判断请求是否为mock请求
+     * @param headers
+     * @param otherOptions
      */
     init({
         setOptions = (/* instance, isMock */) => {},
@@ -114,7 +116,7 @@ export default class SxFetch {
         onShowSuccessTip = (/* response, successTip */) => {},
         isMock = (/* url, data, method, options */) => {},
         headers = {},
-        ...otherOptions,
+        ...otherOptions
     }) {
         setOptions(this.axiosInstance);
         setOptions(this.mockInstance, true); // isMock
@@ -156,7 +158,7 @@ export default class SxFetch {
                 url,
                 data,
                 cancelToken: new CancelToken(c => cancel = c),
-                ...options,
+                ...options
             }).then(response => {
                 this._onShowSuccessTip(response, successTip);
                 resolve(response.data);
